@@ -1,4 +1,4 @@
-from utils import Words, WordleRow, WordleCell, KeyBoard
+from utils import Words, WordleRow, KeyBoard
 
 class WordleSolver:
     def __init__(self, target_word, path):
@@ -31,25 +31,17 @@ class WordleSolver:
         return -1
     
     def generate_initial_guess(self):
-        return 'crane'
+        import random
+        words_list = self.words.words_dict[self.word_length]
+        idx = random.randrange(0, len(words_list))
+        return words_list[idx]
     
     def generate_guess(self):
-        '''
-        TODO
-        [x] Iterate through all words with same length as target
-        [] A word can be a possible solution if 
-            [x] It contains all the correctly guessed letters so far in the correct position 
-            [x] It doesn't contain a character that is not in the word
-            [] It contains characters known to be in the word
-        [x] Add a word that passes these checks to the list of possible next guesses
-        [x] Randomly select from one of the guesses
-        '''
         import random
         valid_guesses = []
-        word_list = self.words.words_dict[self.word_length]
-        for word in word_list:
+        words_list = self.words.words_dict[self.word_length]
+        for word in words_list:
             is_valid = True
-            count = 0
             for i, char in enumerate(word):
                 if char in self.key_board.not_in_word:
                     is_valid = False
@@ -57,13 +49,14 @@ class WordleSolver:
                 if i in self.key_board.correctly_guessed and char != self.key_board.correctly_guessed[i]:
                     is_valid = False
                     break
-                if char in self.key_board.in_word:
-                    count += 1
-            if count != len(self.key_board.in_word):
-                is_valid = False
+            for char in self.key_board.in_word:
+                if char not in word:
+                    is_valid = False
+                    break
             if is_valid:
                 valid_guesses.append(word)
         idx = random.randrange(0, len(valid_guesses))
+        # print(valid_guesses[idx - 5:idx + 5])
         return valid_guesses[idx]
 
     def update_row(self, guess):
@@ -91,8 +84,9 @@ class WordleSolver:
                         continue
                     self.key_board.not_in_word.add(guess[i])
                     
-        print(self.guesses[-1], indices)
-        print(self.key_board)
+        # print(self.guesses[-1], indices)
+        # print(self.key_board)
+        print(self.guesses[-1], self.key_board)
         self.row.update_domains_correctly_guessed(indices['correctly_guessed'])
         self.row.update_domains_in_word(indices['in_word'])
         self.row.update_domains_not_in_word(indices['not_in_word'])
@@ -114,10 +108,7 @@ class WordleSolver:
         return hash_table
 
 if __name__ == '__main__':
-    #target_word = input('Please provide a word: ').lower()
-    target_word = 'scary'
+    target_word = input('Please provide a word: ').lower()
     solver = WordleSolver(target_word, 'words.txt')
-    print(target_word)
     solver.solve()
     print(solver.guesses)
-    # print(solver.generate_guess())
