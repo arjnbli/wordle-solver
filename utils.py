@@ -76,8 +76,8 @@ class WordleRow:
 class KeyBoard:
     def __init__(self):
         self.correctly_guessed = {}
-        self.in_word = {}
-        self.not_in_word = {}
+        self.in_word = set()
+        self.not_in_word = set()
     
     def __repr__(self):
         return str({
