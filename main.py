@@ -3,11 +3,17 @@ class WordleSolver:
         self.words = Words(path)
         self.target_word = self.validate_input(target_word)
         self.word_length = len(target_word)
+        self.num_guesses = 0
+        self.max_guesses = self.word_length
 
     def validate_input(self, target_word):
         if target_word not in self.words.words_set:
             raise(ValueError('Invalid input word'))
         return target_word
+    
+    def solve(self):
+        pass
+
 
 class Words:
     def __init__(self, path):
