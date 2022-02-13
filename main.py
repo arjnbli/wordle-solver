@@ -4,7 +4,7 @@ class WordleSolver:
         self.target_word = self.validate_input(target_word)
         self.word_length = len(target_word)
         self.num_guesses = 0
-        self.max_guesses = self.word_length
+        self.max_guesses = self.word_length + 1
 
     def validate_input(self, target_word):
         if target_word not in self.words.words_set:
@@ -12,6 +12,37 @@ class WordleSolver:
         return target_word
     
     def solve(self):
+        while self.num_guesses < self.max_guesses:
+            if self.num_guesses == 0:
+                guess = self.generate_initial_guess()
+            else:
+                guess = self.generate_guess()
+            self.update_row(guess)
+            self.num_guesses += 1
+            if guess == self.target_word:
+                return self.num_guesses
+        return -1
+    
+    def generate_initial_guess(self):
+        return 'crane'
+    
+    def generate_guess(self):
+        pass
+
+    def update_row(self):
+        pass
+
+class WordleRow:
+    def __init__(self, word_length):
+        self.row = [WordleCell() for i in range(word_length)]
+
+class WordleCell:
+    def __init__(self, char=' '):
+        self.char = char
+        self.domain = set('abcdefghijklmnopqrstuvwxyz')
+
+class KeyBoard:
+    def __init__(self):
         pass
 
 
