@@ -22,9 +22,9 @@ def main():
             num_solved += 1
             num_guesses += solver.num_guesses
     average_guesses = num_guesses / num_solved
-    print('{} solved out of {}. Average Guesses = {}'.format(num_solved, len(wordle_answers.words_set), average_guesses))
-
-
+    num_words = len(wordle_answers.words_set)
+    percentage_solved = num_solved / num_words
+    print('{} solved out of {}({}%). Average Guesses = {}'.format(num_solved, num_words, percentage_solved, average_guesses))
 
 if __name__ == '__main__':
     main()
