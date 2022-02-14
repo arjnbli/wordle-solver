@@ -1,7 +1,7 @@
 # wordle-solver 
 
 ## Overview
-Python module for solving the wordle game - https://www.nytimes.com/games/wordle/index.html. The goal of the game is to guess an arbitrary word 5-letter word in 6
+Python module for solving the wordle game - https://www.nytimes.com/games/wordle/index.html. The goal of the game is to guess an arbitrary 5-letter word in 6
 tries. If a guess doesn't match the target word, information is revealed regarding each character. If a character in the guess is in the same position as the same 
 character in the target word, it is marked with green. If a character in the guess is in the target word but in the wrong position, it is marked with yellow. If a 
 character in the guess is not in the target word, it is marked with black. The information provided by the hints can be leveraged to generate the next guess.
@@ -20,7 +20,7 @@ The main.py file checks the performance of the wordle-solver using the words in 
 (These words extracted from the source of the wordle website itself)
 
 ## Performance
-Currently initial guesses generated are randomly chosen from the list of all words of length=target_word such that they have unique characters (in order maximize
+Currently, initial guesses generated are randomly chosen from the list of all words of length=target_word such that they have unique characters (in order maximize
 information obtained from the subsequent hint). Guesses that are generated subsequently are randomly chosen from a subset of the total words. This subset 
 is obtained by eliminating words based on the hint - words that have characters confirmed not to be in the target by the hint and words that don't have all the 
 characters known to be in the target word. The performance metrics obtained by averaging the results over 10 passes through the words in the wordle-answers list
