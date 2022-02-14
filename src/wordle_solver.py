@@ -35,8 +35,18 @@ class WordleSolver:
     def generate_initial_guess(self):
         import random
         words_list = self.words.words_dict[self.word_length]
-        idx = random.randrange(0, len(words_list))
-        return words_list[idx]
+        words_num_unique_letters = {}
+        max_unique_letters = 0
+        for word in words_list:
+            num_unique_letters = len(set(word))
+            max_unique_letters = max(max_unique_letters, num_unique_letters)
+            if num_unique_letters not in words_num_unique_letters:
+                words_num_unique_letters[num_unique_letters] = [word]
+            else:
+                words_num_unique_letters[num_unique_letters].append(word)
+        potential_initial_guesses = words_num_unique_letters[max_unique_letters]
+        idx = random.randrange(0, len(potential_initial_guesses))
+        return potential_initial_guesses[idx]
     
     def generate_guess(self):
         import random
