@@ -14,8 +14,8 @@ to guess it in at most word_length + 1 tries (This can can adjusted). wordle-sol
 it can be configured to work with any word list by providing the path to the word file to the WordleSolver class.
 
 The main.py file checks the performance of the wordle-solver using the words in - 
-1)https://gist.github.com/cfreshman/a03ef2cba789d8cf00c08f767e0fad7b 
-2)https://gist.github.com/cfreshman/cdcdf777450c5b5301e439061d29694c 
+1. https://gist.github.com/cfreshman/a03ef2cba789d8cf00c08f767e0fad7b 
+2. https://gist.github.com/cfreshman/cdcdf777450c5b5301e439061d29694c 
 
 (These words extracted from the source of the wordle website itself)
 
@@ -25,5 +25,5 @@ information obtained from the subsequent hint). Guesses that are generated subse
 is obtained by eliminating words based on the hint - words that have characters confirmed not to be in the target by the hint and words that don't have all the 
 characters known to be in the target word. The performance metrics obtained by averaging the results over 10 passes through the words in the wordle-answers list
 are as follows - 
-Percentage of words guessed in 6 tries or less = 77.47%
-Average Guesses for Words guessed in 6 tries or less = 4.81 guesses
+1. Percentage of words guessed in 6 tries or less = 77.47%
+2. Average Guesses for Words guessed in 6 tries or less = 4.81 guesses
