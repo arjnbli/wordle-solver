@@ -1,7 +1,7 @@
 # wordle-solver 
 
 ## Overview
-Python based-solver for wordle (https://www.nytimes.com/games/wordle/index.html). The goal of the game is to guess an arbitrary 5-letter word in 6
+Python-based solver for wordle (https://www.nytimes.com/games/wordle/index.html). The goal of the game is to guess an arbitrary 5-letter word in 6
 tries. If a guess doesn't match the target word, information is revealed regarding each character. If a character in the guess is in the same position as the same 
 character in the target word, it is marked with green. If a character in the guess is in the target word but in the wrong position, it is marked with yellow. If a 
 character in the guess is not in the target word, it is marked with black. The information provided by the hints can be leveraged to generate the next guess.
