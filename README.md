@@ -10,7 +10,7 @@ character in the guess is not in the target word, it is marked with black. The i
 The two modules of interest are - wordle_solver.py and main.py. 
 
 The wordle_solver.py prompts the user for a target word (while the game only involves 5-letter words, this module can handle words of any length) and attempts 
-to guess it in at most word_length + 1 tries (This can can adjusted). wordle-solver.py uses the words provided here -https://github.com/dwyl/english-words but
+to guess it in at most word_length + 1 tries (This can can adjusted). wordle_solver.py uses the words provided here -https://github.com/dwyl/english-words but
 it can be configured to work with any word list by providing the path to the word file to the WordleSolver class.
 
 The main.py file checks the performance of the wordle-solver using the words in - 
